@@ -36,7 +36,7 @@ const HomePage = () => {
     {name: 'circle', img: circle}, 
     {name: 'line', img: line},
     {name: 'freehand', img: pen},
-    {name: 'polyline', img: polyline},
+    // {name: 'polyline', img: polyline},
     {name: 'cursor', img: cursor},
   ]);
   const [lineTypes, setLineTypes] = useState([{name: 'real', img: real}, {name: 'dotted', img: dotted}]);
@@ -178,6 +178,7 @@ const HomePage = () => {
     document.getElementById('cont').style.width = "383px";
     document.getElementById('curs').style.display = "none";
     document.getElementById('line').style.display = "none";
+    document.getElementById('field').style.display = "none";
     document.getElementById('col').style.display = "none";
     document.getElementById('btnSave').style.display = "none";
     
@@ -291,6 +292,7 @@ const dragUpdateBallHandler = (id) => {
       document.getElementById('cont').style.width = "";
       document.getElementById('curs').style.display = "flex";
       document.getElementById('line').style.display = "flex";
+      document.getElementById('field').style.display = "flex";
       document.getElementById('col').style.display = "flex";
       document.getElementById('btnSave').style.display = "flex";
       const plas = document.getElementsByClassName('pla');
@@ -387,7 +389,7 @@ const dragUpdateBallHandler = (id) => {
               <div className="block cursor-pointer bg-[rgba(0,0,0,.6)] px-4 py-1 "><div className="h-10 w-10 rounded-full" style={{backgroundColor: selectedColor.color}} /></div>
             </div>
 
-            <div className="  flex flex-col group h-[200px] relative  " id="line"> 
+            <div className="  flex flex-col group h-[200px] relative  " id="field"> 
               <ul className="hidden  absolute bottom-full w-full group-hover:block bg-[rgba(0,0,0,.6)]">
                 {fields.map((field, index) => field.name !== selectedField.name && <li key={index} className="hover:bg-[rgba(0,0,0,.7)] cursor-pointer flex justify-center py-4 px-2 " onClick={() => setSelectedField({name: field.name, img:field.img})}><img className="h-10" src={field.img} /> </li>)}
               </ul>
