@@ -8,12 +8,10 @@ import DraggableElement from "./DraggableElement";
 
         return(
             <DraggableElement  group={group} onDrag={onDrag}  position={position} onRightClick={onRightClick} type= "player" >
-                <p className="font-[800] text-[14px] -mt-16 text-white">{player_name}</p>
-                <div style={{ backgroundColor: color, display: "flex", alignItems:"center", justifyContent: "center" }} className="w-10 h-10 rounded-full text-center cursor-pointer font-bold text-white pla"  >
-                  {player_number}
+                <p className="font-[800] text-[14px] -mt-16 ">{player_name}</p>
+                <div className="absolute flex flex-col justify-center items-center ">
+                    <div style={{backgroundColor: color}} className={`w-10 h-10 rounded-full bg-[${color}] flex justify-center items-center cursor-pointer font-[800] text-[18px]  `}>{player_number}</div>
                 </div>
-
-
             </DraggableElement>
         );
 

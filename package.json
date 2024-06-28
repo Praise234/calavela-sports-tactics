@@ -10,10 +10,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "dom-to-image": "^2.6.0",
+    "dom-to-image-more": "^3.3.0",
+    "html2canvas": "^1.4.1",
+    "konva": "^9.3.11",
     "react": "^18.2.0",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2.0",
     "react-draggable": "^4.4.6",
-    "react-router-dom": "^6.23.0"
+    "react-konva": "^18.2.10",
+    "react-router-dom": "^6.23.0",
+    "react-screen-capture": "^1.1.1",
+    "use-react-screenshot": "^4.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
