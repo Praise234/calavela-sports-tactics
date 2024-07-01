@@ -175,7 +175,7 @@ const HomePage = () => {
 
     
 
-    document.getElementById('cont').style.width = "383px";
+    document.getElementById('cont').style.width = "508px";
     document.getElementById('curs').style.display = "none";
     document.getElementById('line').style.display = "none";
     document.getElementById('field').style.display = "none";
@@ -202,7 +202,7 @@ const HomePage = () => {
         .then((canvas) => {
           const imgData = canvas.toDataURL('image/png');
           const link = document.createElement('a');
-          link.download = 'my-image.png';
+          link.download = 'tactical-board.png';
           link.href = imgData;
           link.click();
           setUpdateFlag(false); // Reset the flag after processing
@@ -366,7 +366,7 @@ const dragUpdateBallHandler = (id) => {
             </div>
           )}
 
-          <div className="flex gap-3 h-[50px]" id="cont">
+          <div className="flex gap-3 h-[50px] " id="cont">
             <div className="  flex flex-col group h-[200px] relative" id="curs"> 
               <ul className="hidden absolute bottom-full w-full group-hover:block bg-[rgba(0,0,0,.6)]">
                 {shapes.map((item, index) => item.name !== selectedShape.name && <li key={index} className="hover:bg-[rgba(0,0,0,.7)] cursor-pointer flex justify-center py-4 px-2 " onClick={() => setSelectedShape({name: item.name, img:item.img})}><img className="h-10" src={item.img} /> </li>)}
