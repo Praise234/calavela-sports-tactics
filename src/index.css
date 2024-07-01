@@ -17,6 +17,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.handle {
+  transform: translate3d(0, 0, 0);
+}
+
+.handle img {
+  pointer-events: auto;  /* Allows dragging on the image */
+}
+
+
+
 a {
   font-weight: 500;
   color: #646cff;
