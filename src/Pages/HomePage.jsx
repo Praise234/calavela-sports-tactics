@@ -1,13 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import PlayerComponent from "../Components/PlayerComponent";
+
 import football_pitch from "../assets/images/football-field.png";
+import football_ball from "../assets/images/football.png";
 import lacrosse_pitch from "../assets/images/lacrosse-women.png";
+import lacrosse_ball from "../assets/images/lacrosse-ball.png";
 import icehockey_pitch from "../assets/images/icehockey.png";
+import icehockey_ball from "../assets/images/icehockey-ball.png";
 import netball_pitch from "../assets/images/netball.png";
+import netball_ball from "../assets/images/net-ball.png";
 import futsal_pitch from "../assets/images/futsal.png";
+import futsal_ball from "../assets/images/futsal-ball.png";
 import floorball_pitch from "../assets/images/floorball.png";
+import floorball_ball from "../assets/images/floor-ball.png";
 import basketball_pitch from "../assets/images/basketball.png";
+import basketball_ball from "../assets/images/basket-ball.png";
 import americanfootball_pitch from "../assets/images/americanfootball.png";
+import americanfootball_ball from "../assets/images/american-ball.png";
 
 import ContextMenuComponent from "../Components/ContextMenuComponent";
 import football from "../assets/images/football.png"
@@ -44,18 +53,19 @@ const HomePage = () => {
   const [selectedLineType, setSelectedLineType] = useState(lineTypes[0]);
 
   const [fields, setFields] = useState([
-    {name: "football_pitch", img: football_pitch},
-    {name: "lacrosse_pitch", img: lacrosse_pitch},
-    {name: "icehockey_pitch", img: icehockey_pitch},
-    {name: "netball_pitch", img: netball_pitch},
-    {name: "futsal_pitch", img: futsal_pitch},
-    {name: "floorball_pitch", img: floorball_pitch},
-    {name: "basketball_pitch", img: basketball_pitch},
-    {name: "americanfootball_pitch", img: americanfootball_pitch}
+    {name: "football_pitch", img: football_pitch, ball_img: football_ball},
+    {name: "lacrosse_pitch", img: lacrosse_pitch, ball_img: lacrosse_ball},
+    {name: "icehockey_pitch", img: icehockey_pitch, ball_img: icehockey_ball},
+    {name: "netball_pitch", img: netball_pitch, ball_img: netball_ball},
+    {name: "futsal_pitch", img: futsal_pitch, ball_img: futsal_ball},
+    {name: "floorball_pitch", img: floorball_pitch, ball_img: floorball_ball},
+    {name: "basketball_pitch", img: basketball_pitch, ball_img: basketball_ball},
+    {name: "americanfootball_pitch", img: americanfootball_pitch, ball_img: americanfootball_ball}
 
   ]);
   const [selectedField, setSelectedField] = useState(fields[0]);
-
+  
+  
  
 
 
@@ -66,7 +76,7 @@ const HomePage = () => {
     [{ id: 4, color: "#000000", name: "", number: 1 }],
   ]);
 
-
+  
 
   const [bids, setBids] = useState([
     [{ id: 1, color: "#ff0000", name: "" }],
@@ -87,6 +97,7 @@ const HomePage = () => {
   const [footballs, setFootballs] = useState([
     [{ id: 1, color: "#000000", name: 'f01', img: football, number: 1}],
   ]);
+
 
   const [updateFlag, setUpdateFlag] = useState(false);
   const [updateSecFlag, setUpdateSecFlag] = useState(false);
@@ -121,7 +132,7 @@ const HomePage = () => {
       id: footballs[0][footballs.length - 1].id + 1,
       color: "#000000",
       name: "f" + "0" + (footballs[0][footballs.length - 1].id + 1),
-      img: football,
+      img: selectedField.ball_img,
       number: footballs[0][footballs.length - 1].number + 1
     };
 
@@ -362,7 +373,7 @@ const dragUpdateBallHandler = (id) => {
           
           {footballs.map((item, id) => 
             <div className="relative h-10 w-[45px]" key={id}>
-              {item.length > 0 && item.map((football, idx) => <FootBall container = {container} key={"F" + idx + ' ' + football.id} number = {football.number} onDrag={() => dragBallHandler(idx)} position={idx} img={football.img} onRightClick = {handleContextMenu}  />)}
+              {item.length > 0 && item.map((football, idx) => <FootBall container = {container} key={"F" + idx + ' ' + football.id} number = {football.number} onDrag={() => dragBallHandler(idx)} position={idx} img={selectedField.ball_img} onRightClick = {handleContextMenu}  />)}
             </div>
           )}
 
@@ -391,7 +402,7 @@ const dragUpdateBallHandler = (id) => {
 
             <div className="  flex flex-col group h-[200px] relative  " id="field"> 
               <ul className="hidden  absolute bottom-full w-full group-hover:block bg-[rgba(0,0,0,.6)]">
-                {fields.map((field, index) => field.name !== selectedField.name && <li key={index} className="hover:bg-[rgba(0,0,0,.7)] cursor-pointer flex justify-center py-4 px-2 " onClick={() => setSelectedField({name: field.name, img:field.img})}><img className="h-10" src={field.img} /> </li>)}
+                {fields.map((field, index) => field.name !== selectedField.name && <li key={index} className="hover:bg-[rgba(0,0,0,.7)] cursor-pointer flex justify-center py-4 px-2 " onClick={() => setSelectedField({name: field.name, img:field.img, ball_img: field.ball_img})}><img className="h-10" src={field.img} /> </li>)}
               </ul>
               <div className="block cursor-pointer bg-[rgba(0,0,0,.6)] px-4 py-1  "><img className="h-10" src={selectedField.img} /></div>
             </div>

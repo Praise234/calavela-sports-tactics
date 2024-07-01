@@ -31,7 +31,7 @@ const DraggableElement = ({onDrag, children, group, position, onRightClick, type
 
 
     return(
-        <Draggable  nodeRef={elemRef} onDrag={dragHandler}   >
+        <Draggable  nodeRef={elemRef} onDrag={dragHandler} defaultClassName="absolute"   >
 
             <div ref={elemRef} onClick={(e) => e.preventDefault()} onContextMenu={(event) => onRightClick(event, group, position, type)} className={`absolute  cursor-pointer  ${type === 'ball' && 'w-11 h-11'} flex justify-center items-center z-[${100000 }]`} >
                 {children}

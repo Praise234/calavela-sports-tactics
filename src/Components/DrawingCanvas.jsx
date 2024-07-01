@@ -514,7 +514,7 @@ const DrawingCanvas = ({ drawMode, lineType, color }) => {
         onMouseLeave={handleMouseLeaveStage}
         onMouseEnter={handleMouseLeave}
         onMouseOver={!isDrawing && handleMouseLeave}
-        className='border stage absolute '
+        className=' stage absolute '
         style={{ cursor: drawMode !== 'cursor' ? `url(${cursorPenc}), auto` : 'default' }}
       
       >
