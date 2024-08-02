@@ -261,7 +261,11 @@ const HomePage = () => {
         // plas[i].style.alignItems = "";
         // plas[i].style.justifyContent = "";
         plas[i].style.paddingBottom = "12px";
-        pname[i].style.marginBottom = "4px";
+        if(pname.length > 0 && i < pname.length ) {
+
+          pname[i].style.marginBottom = "2px";
+        }
+        plas[i].style.marginBottom = "2px";
       }
     }
 
@@ -421,7 +425,10 @@ const dragUpdateBallHandler = (id) => {
           // plas[i].style.alignItems = "center";
           // plas[i].style.justifyContent = "center";
           plas[i].style.paddingBottom = "0";
-          pname[i].style.marginBottom = "0";
+          if(pname.length > 0 && i < pname.length) {
+            pname[i].style.marginBottom = "0";
+          }
+          plas[i].style.marginBottom = "0";
         }
       }
 
@@ -556,7 +563,7 @@ const dragUpdateBallHandler = (id) => {
           <FaArrowCircleDown size={24}  className="  text-[#000]"/>
       
         </div>
-        <div className= {`flex lg:hidden gap-2 flex-col transition-all duration-500 lg:flex-row items-center lg:justify-center w-full bottom-0 bg-[#fff] lg:bg-transparent h-[150px] lg:h-[50px]  ${mobileMenu ?  "p-5 bottom-[0px]" : "-bottom-[170px]  p-0  lg:bottom-0"} lg:p-0 absolute lg:relative  `} >
+        <div className= {`flex lg:hidden gap-2 flex-col transition-all duration-500 lg:flex-row items-center lg:justify-center w-full bottom-0 bg-[#fff] lg:bg-transparent h-[150px] lg:h-[50px]  ${mobileMenu ?  "p-5 bottom-[0px]" : "bottom-[-170px]  p-0  lg:bottom-0"} lg:p-0 absolute lg:relative  `} >
           <div className="flex items-center gap-4 ">
             {players.map((group, idx) =>
               <div className="h-14 lg:h-24 w-6 lg:w-11  flex justify-center items-center " key={idx}>
