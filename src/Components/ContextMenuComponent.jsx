@@ -25,8 +25,8 @@ const ContextMenuComponent = ({
 
   const colors = ["#ff0000", "#ffff00", "#0000ff", "#000000"];
 
-  const handleNumberChange = (e, player_num) => {
-    if (e.keyCode === 13) {
+  const handleNumberChange = (e, player_num, flag) => {
+    if (e.keyCode === 13 || flag) {
       setObjs((currentObjs) => {
         if (
           currentObjs[selectedPlayerDetails.group] &&
@@ -46,12 +46,12 @@ const ContextMenuComponent = ({
         }
         return currentObjs;
       });
-      setSelectedPlayerDetails(null);
+      // setSelectedPlayerDetails(null);
     }
   };
 
-  const handleNameChange = (e, player_name) => {
-    if (e.keyCode === 13) {
+  const handleNameChange = (e, player_name, flag) => {
+    if (e.keyCode === 13 || flag) {
       setObjs((currentObjs) => {
         if (
           currentObjs[selectedPlayerDetails.group] &&
@@ -71,7 +71,7 @@ const ContextMenuComponent = ({
         }
         return currentObjs;
       });
-      setSelectedPlayerDetails(null);
+    //   setSelectedPlayerDetails(null);
     }
   };
 
@@ -95,10 +95,11 @@ const ContextMenuComponent = ({
       }
       return currentObjs;
     });
-    setSelectedPlayerDetails(null);
+    // setSelectedPlayerDetails(null);
   }
 
   const handleDeleteObj = () => {
+    // console.log(selectedPlayerDetails )
     setObjs((currentObjs) => {
       if (
         currentObjs[selectedPlayerDetails.group] &&
@@ -109,7 +110,7 @@ const ContextMenuComponent = ({
   
         newGroup.splice(selectedPlayerDetails.position, 1);
 
-        console.log(newGroup)
+      
   
         newObjs[selectedPlayerDetails.group] = newGroup;
   
@@ -121,7 +122,15 @@ const ContextMenuComponent = ({
     setSelectedPlayerDetails(null);
   }
 
-  console.log(selectedPlayerDetails)
+  const handleSaveObj = (e) => {
+
+    handleNameChange(e, playerDetails.name, true);
+    handleNumberChange(e, playerDetails.number, true);
+    handleColorChange(playerDetails.color);
+    setSelectedPlayerDetails(null);
+  };
+
+  // console.log(selectedPlayerDetails)
   
 
   const elem =  (
@@ -141,7 +150,7 @@ const ContextMenuComponent = ({
           }
           className="input-class w-full bg-transparent border-2 border-custom-gray h-9 rounded-lg px-2"
           onClick={(e) => e.preventDefault()}
-          onKeyDown={(e) => handleNumberChange(e, playerDetails.number)}
+          onKeyDown={(e) => handleNumberChange(e, playerDetails.number, false)}
         />
       </li>
       <li>
@@ -157,13 +166,13 @@ const ContextMenuComponent = ({
           }
           className="input-class w-full bg-transparent border-2 border-custom-gray h-9 rounded-lg px-2"
           onClick={(e) => e.preventDefault()}
-          onKeyDown={(e) => handleNameChange(e, playerDetails.name)}
+          onKeyDown={(e) => handleNameChange(e, playerDetails.name, false)}
         />
       </li></>)}
 
       {(selectedPlayerDetails.type === "player" || selectedPlayerDetails.type === "bid") && (<li className="flex justify-center items-center w-full gap-3">
-        {colors.map((color) => (
-          <div className={`${
+        {colors.map((color, idx) => (
+          <div key={idx} className={`${
             objs[selectedPlayerDetails.group][
               selectedPlayerDetails.position
             ].color === color && "border-[3px] border-[#828282] "
@@ -180,6 +189,9 @@ const ContextMenuComponent = ({
       <li>
         <button className="flex justify-center items-center bg-[#000] border-none text-white mx-auto mt-2 w-full" onClick={handleDeleteObj}>Delete</button>
       </li>
+      {selectedPlayerDetails.type === "player" &&  <li>
+        <button className="flex justify-center items-center bg-[#006400] border-none text-white mx-auto mt-2 w-full" onClick={handleSaveObj}>Save</button>
+      </li>}
     </ul>
   );
 

@@ -1,22 +1,24 @@
+import { shapes } from "konva/lib/Shape";
+import useShapesStore from "../store/shapesStore";
 
 const ShapesContextMenuComponent = ({
   x,
   y,
   visible,
-  setShapes,
-  shapes,
-  selectedShapeId,
-  setSelectedShapeId
+  
 }) => {
 
-
-  
+  const { setShapes,
+    selectedShapeId,
+    setSelectedShapeId } = useShapesStore();
 
 
  
+    // console.log(shapes)
 
   const handleDeleteObj = () => {
     setShapes((prev) => [...prev.map(shape => shape.id !== selectedShapeId && {...shape})]);
+
   
     setSelectedShapeId(null);
   }

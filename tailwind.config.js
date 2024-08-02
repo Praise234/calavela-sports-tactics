@@ -6,6 +6,12 @@ export default {
   ],
   theme: {
     extend: {
+      width: {
+        'custom-width': '320px' // custom width
+      },
+      height: {
+        'custom-height': '863px' // custom height
+      },
       fontFamily: {
         'lato': ['Lato', 'sans-serif'],
         'playfair': ['Playfair Display', 'serif'],
@@ -16,8 +22,9 @@ export default {
         'custom-black': "#000000",
         'custom-gray': "#828282"
       },
-      spacing: {
-        
+      rotate: {
+        '90': '270deg',
+        '0': '0deg',
       }
     },
   },
